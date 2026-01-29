@@ -19,6 +19,10 @@ run/main_scene="uid://dqda35yu1v2y2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Resources/Textures/icon.svg"
 
+[display]
+
+window/size/mode=3
+
 [file_customization]
 
 folder_colors={

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d2x6dliwryd8e"]
+
+[ext_resource type="Script" uid="uid://csj6s2m6jju0h" path="res://Resources/Scripts/Player/player_movement.gd" id="1_2gd5p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_higq2"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=1110646399]
+script = ExtResource("1_2gd5p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1952333649]
+shape = SubResource("CapsuleShape3D_higq2")
+
+[node name="Neck" type="Node3D" parent="." unique_id=724146680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=1896383034]
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D" unique_id=1135000813]
+target_position = Vector3(0, 0, -2)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Camera3D" unique_id=1886816112]
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Neck/Camera3D" unique_id=696026483]
