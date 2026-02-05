@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d2x6dliwryd8e"]
 
 [ext_resource type="Script" uid="uid://csj6s2m6jju0h" path="res://Resources/Scripts/Player/player_movement.gd" id="1_2gd5p"]
+[ext_resource type="Script" uid="uid://bts0yxasb3rok" path="res://Resources/Scripts/Player/player_camera.gd" id="2_0jvrx"]
+[ext_resource type="Script" uid="uid://c2a35u4yskypj" path="res://Resources/Scripts/Player/interact_player.gd" id="3_3hrs8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_higq2"]
 radius = 0.4
@@ -16,12 +18,97 @@ shape = SubResource("CapsuleShape3D_higq2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=1896383034]
+script = ExtResource("2_0jvrx")
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D" unique_id=1135000813]
 target_position = Vector3(0, 0, -2)
+collision_mask = 3
+debug_shape_custom_color = Color(0.6120087, 0.1912018, 0.99999994, 1)
+script = ExtResource("3_3hrs8")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Camera3D" unique_id=1886816112]
+[node name="Flashlight" type="SpotLight3D" parent="Neck/Camera3D" unique_id=1886816112]
+visible = false
 light_energy = 10.0
-spot_range = 10.0
+shadow_enabled = true
+spot_range = 9.63118
+spot_angle = 33.13921
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Neck/Camera3D" unique_id=696026483]
+
+[node name="RightArm" type="Marker3D" parent="Neck" unique_id=2081787138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48067206, -0.5818346, -0.6516609)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2088404797]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=994125219]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1981702678]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Others" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=361715295]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FlashLabel" type="Label" parent="CanvasLayer/UI/Others" unique_id=677108329]
+layout_mode = 2
+text = "Flaslight : off"
+
+[node name="InterLabel" type="Label" parent="CanvasLayer/UI" unique_id=602545293]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -11.5
+offset_right = 15.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGlabel" type="Panel" parent="CanvasLayer/UI/InterLabel" unique_id=546538764]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tasks" type="HBoxContainer" parent="CanvasLayer/UI" unique_id=1541062727]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 88.0
+offset_bottom = 25.0
+grow_vertical = 2
+
+[node name="Quests" type="VBoxContainer" parent="CanvasLayer/UI/Tasks" unique_id=1031635455]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TaskLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=1046148006]
+layout_mode = 2
+text = "task"
+
+[node name="DescriptionLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=14386208]
+layout_mode = 2
+text = "description"
+
+[node name="ExecutionControl" type="VBoxContainer" parent="CanvasLayer/UI/Tasks" unique_id=1607587988]
+layout_mode = 2
+
+[node name="Execution" type="Label" parent="CanvasLayer/UI/Tasks/ExecutionControl" unique_id=855198106]
+layout_mode = 2
+text = "yes"
