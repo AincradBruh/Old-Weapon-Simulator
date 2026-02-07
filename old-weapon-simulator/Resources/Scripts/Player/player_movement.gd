@@ -7,6 +7,9 @@ extends CharacterBody3D
 @onready var audio_stream = $AudioStreamPlayer
 
 @onready var flash_label = $CanvasLayer/UI/Others/FlashLabel
+@onready var task_label = $CanvasLayer/UI/Tasks/Quests/TaskLabel
+@onready var des_label = $CanvasLayer/UI/Tasks/Quests/DescriptionLabel
+@onready var glodal_tasks_label = $CanvasLayer/UI/GlobalTasks/AllTasks
 
 var speed = 4.0
 var sprint = 7.0
@@ -25,6 +28,11 @@ var original_scale = self.scale.y
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var current_task = TaskManager.get_random_task()
+	var all_tasks = TaskManager.tasks
+	task_label.text = current_task["task"]
+	des_label.text = current_task["description"]
+	glodal_tasks_label.text = str(all_tasks)
 
 #  физика игрока
 func _physics_process(delta: float) -> void:
@@ -61,9 +69,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			velocity.z = move_toward(velocity.z, 0, speed)
-	
-	
-		
 	
 	move_and_slide()
 	
@@ -118,7 +123,7 @@ func shake_camera():
 		#tween.tween_property(camera, "rotation", camera.rotation + target_rotation, 0.1).set_delay(i * 0.15)
 	
 	# Возврат в исходное положение
-	tween.chain().tween_property(camera, "position", original_position, 1).set_delay(0.2)
+	tween.chain().tween_property(camera, "position", original_position, 0.1).set_delay(0.2)
 	#tween.chain().tween_property(camera, "rotation", original_rotation, 1).set_delay(0.2)
 
 
@@ -142,4 +147,4 @@ func shoot_shake_camera():
 		tween.tween_property(camera, "position", camera.position + target_offset, 0.1).set_delay(i * 0.15)
 	
 	# Возврат в исходное положение
-	tween.chain().tween_property(camera, "position", original_position, 1).set_delay(0.2)
+	tween.chain().tween_property(camera, "position", original_position, 0.1).set_delay(0.2)

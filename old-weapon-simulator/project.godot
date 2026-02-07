@@ -14,10 +14,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Old Weapon Simulator"
+config/name="Shell Shock: Fire Mission"
 run/main_scene="uid://dqda35yu1v2y2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Resources/Textures/icon.svg"
+
+[autoload]
+
+TaskManager="*uid://cu1ldeborrhny"
 
 [display]
 

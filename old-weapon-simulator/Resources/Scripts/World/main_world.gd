@@ -10,6 +10,10 @@ extends Node3D
 @onready var alarm_light = $Weapon/WeaponFixed/RotateBase/Lights/AlarmLight
 @onready var main_light = $Weapon/WeaponFixed/RotateBase/Lights/MainLight
 
+@onready var time_label = $CanvasLayer/MainUI/VBoxContainer/TimeLabel
+@onready var day_night_label = $CanvasLayer/MainUI/VBoxContainer/DayNightLabel
+@onready var day_count_label = $CanvasLayer/MainUI/VBoxContainer/DayCountLabel
+
 var is_play = false
 var time_of_day: float = 0.0
 var is_day: bool = true
@@ -19,13 +23,11 @@ var sun_intensity
 var rotation_day_night = 0.0
 var game_time: float = 0.0  # В часах
 var real_time_elapsed: float = 0.0
-var game_hours_per_real_second: float = 1.2 / 60.0  # 2 часа/60 секунд
+var game_hours_per_real_second: float = 1.2 / 60.0  # 1.2 часа/60 секунд
 var days_count = 0
 
 
 func _ready() -> void:
-	#get_tree().create_timer(1).timeout.connect(AlarmSiren)
-	# Начальные настройки
 	sun.light_energy = 1.0
 	environment.environment.ambient_light_energy = 0.2
 
@@ -66,7 +68,6 @@ func _process(delta):
 	
 	
 	# Обновляем каждую секунду игрового времени
-	# или используем дельту для плавного обновления
 	update_time_display(hour, minute, days_count)
 
 func update_day_night_cycle(delta):
@@ -81,13 +82,9 @@ func update_day_night_cycle(delta):
 		is_day = !is_day
 	
 	update_lighting()
-	
+
 
 func update_lighting():
-	# Дневное освещение
-	sun_intensity = smoothstep(0, 0.5, 1) * 2.0
-	sun_intensity = clamp(sun_intensity, 0.1, 1.0)
-	sun.light_energy = sun_intensity
 	
 	# Вращение солнца
 	sun_rotation = rotation_day_night * -180  # 180 градусов за день
@@ -96,9 +93,6 @@ func update_lighting():
 	if sun.rotation_degrees.x >= 360:
 		sun.rotation_degrees.x = 0
 
-@onready var time_label = $CanvasLayer/MainUI/VBoxContainer/TimeLabel
-@onready var day_night_label = $CanvasLayer/MainUI/VBoxContainer/DayNightLabel
-@onready var day_count_label = $CanvasLayer/MainUI/VBoxContainer/DayCountLabel
 
 func update_time_display(hour, minute, days):
 	var minutes = int(hour)# / 60
@@ -107,4 +101,3 @@ func update_time_display(hour, minute, days):
 	time_label.text = "Time: %02d:%02d" % [minutes, seconds]
 	day_night_label.text = "Now: %s" % ("Daytime" if is_day else "Night")
 	day_count_label.text = "Been days: " + str(days)
-	

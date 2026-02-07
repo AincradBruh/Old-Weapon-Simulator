@@ -86,17 +86,19 @@ grow_vertical = 2
 
 [node name="Tasks" type="HBoxContainer" parent="CanvasLayer/UI" unique_id=1541062727]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -25.0
+offset_top = 40.0
 offset_right = 88.0
-offset_bottom = 25.0
-grow_vertical = 2
+offset_bottom = 117.0
 
 [node name="Quests" type="VBoxContainer" parent="CanvasLayer/UI/Tasks" unique_id=1031635455]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=1723780529]
+layout_mode = 2
+text = "TASKS:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TaskLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=1046148006]
 layout_mode = 2
@@ -106,9 +108,22 @@ text = "task"
 layout_mode = 2
 text = "description"
 
-[node name="ExecutionControl" type="VBoxContainer" parent="CanvasLayer/UI/Tasks" unique_id=1607587988]
-layout_mode = 2
+[node name="GlobalTasks" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=591513947]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 119.0
+offset_bottom = 20.0
+grow_vertical = 2
 
-[node name="Execution" type="Label" parent="CanvasLayer/UI/Tasks/ExecutionControl" unique_id=855198106]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/UI/GlobalTasks" unique_id=1575758926]
 layout_mode = 2
-text = "yes"
+text = "GLOBAL TASKS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AllTasks" type="Label" parent="CanvasLayer/UI/GlobalTasks" unique_id=293283538]
+layout_mode = 2
+paragraph_separator = "}"
