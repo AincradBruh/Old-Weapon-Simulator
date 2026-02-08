@@ -10,9 +10,9 @@ extends Node3D
 @onready var alarm_light = $Weapon/WeaponFixed/RotateBase/Lights/AlarmLight
 @onready var main_light = $Weapon/WeaponFixed/RotateBase/Lights/MainLight
 
-@onready var time_label = $CanvasLayer/MainUI/VBoxContainer/TimeLabel
-@onready var day_night_label = $CanvasLayer/MainUI/VBoxContainer/DayNightLabel
-@onready var day_count_label = $CanvasLayer/MainUI/VBoxContainer/DayCountLabel
+@onready var time_label = $CanvasLayer/MainUI/DateTime/TimeLabel
+@onready var day_night_label = $CanvasLayer/MainUI/DateTime/DayNightLabel
+@onready var day_count_label = $CanvasLayer/MainUI/DateTime/DayCountLabel
 
 var is_play = false
 var time_of_day: float = 0.0
@@ -30,6 +30,7 @@ var days_count = 0
 func _ready() -> void:
 	sun.light_energy = 1.0
 	environment.environment.ambient_light_energy = 0.2
+	EventManager.initialized_nodes()
 
 
 func alarm_siren():

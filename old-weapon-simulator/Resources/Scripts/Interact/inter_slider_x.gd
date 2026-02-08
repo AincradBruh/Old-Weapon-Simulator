@@ -26,3 +26,4 @@ func slide():
 
 func interact_to_e():
 	cannon.rotation_base(rotate_angle_wheel)
+	EventManager.event_x = rotate_angle

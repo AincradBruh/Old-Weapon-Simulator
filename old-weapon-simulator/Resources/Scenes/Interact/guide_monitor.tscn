@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://borbf0pxkq3rd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0b0y8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x3ee"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_0b0y8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4r8xl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3x3ee")
+size = Vector2(1.92, 1.08)
+orientation = 1
+
+[node name="GuideMonitor" type="Node3D" unique_id=1814226979]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1360770610]
+mesh = SubResource("QuadMesh_4r8xl")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=803060314]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport" unique_id=1659654520]
+
+[node name="TaskControl" type="Control" parent="SubViewport/CanvasLayer" unique_id=1387785329]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/CanvasLayer/TaskControl" unique_id=1705857794]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "GUIDE:
+
+Fire Task:
+To complete this task, you need to set the azimuth and elevation using the sliders by scrolling the \"Mouse_Wheel\" and
+pressing \"E\" on them, then press the Fire botton.
+
+Engine Task:
+To complete this task, you need to go down to the -2nd floor to the main engine and refuel by pressing the \"E\" key (you need
+to wait 15 sec).
+
+Drivers Task:
+To complete this task, you need to go down to the -1st floor and repair the cannon driver and the shell driver by pressing \"E\"
+key (you need to wait 15 sec).
+
+Shell Task:
+To complete this task, you need to repair the shell by pressing \"E\" key (you need to wait 15 sec).
+
+To turn on the flashlight - press \"F\".
+To crouch - press \"CTRL\".
+To sprint - press \"SHIFT\"."

@@ -15,13 +15,15 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Shell Shock: Fire Mission"
-run/main_scene="uid://dqda35yu1v2y2"
+config/version="Tech Demo"
+run/main_scene="uid://bj80ehqkisyxj"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Resources/Textures/icon.svg"
+config/icon="uid://b6jm75y3f6aap"
 
 [autoload]
 
 TaskManager="*uid://cu1ldeborrhny"
+EventManager="*uid://40eai5hc8kck"
 
 [display]
 
@@ -37,6 +39,17 @@ folder_colors={
 "res://Resources/Scripts/": "purple",
 "res://Resources/Textures/": "teal"
 }
+
+[global_group]
+
+label=""
+monitor=""
+timer=""
+inter_timer=""
+batter=""
+shell=""
+drivers=""
+fire_button=""
 
 [input]
 

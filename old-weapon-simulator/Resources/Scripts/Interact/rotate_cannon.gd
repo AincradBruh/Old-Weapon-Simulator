@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 @onready var rotate_can = $".."
 @onready var SFXcannon = $"../../../SFXcannon"
+@onready var fire_audio = $ShootCannonAudio
 
 
 @export var player_shake = CharacterBody3D
@@ -33,8 +34,12 @@ func rotation_base(angle_deg):
 func _on_rotation_finished():
 	is_rotation = false
 	SFXcannon.stop()
-	
 
 
 func _on_sf_xcannon_finished() -> void:
 	SFXcannon.play()
+
+
+func fire_cannon():
+	fire_audio.play()
+	player_shake.shoot_shake_camera()

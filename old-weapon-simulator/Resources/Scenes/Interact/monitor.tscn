@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bo7sj8m3j2ipa"]
+
+[ext_resource type="Script" uid="uid://8wjutqufl62s" path="res://Resources/Scripts/Interact/inter_monitor.gd" id="1_q5fal"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q5fal"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k87ww"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_q5fal")
+
+[sub_resource type="QuadMesh" id="QuadMesh_st2co"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(11, 7)
+material = SubResource("StandardMaterial3D_k87ww")
+size = Vector2(1.92, 1.08)
+orientation = 1
+
+[node name="Monitor" type="Node3D" unique_id=1814226979]
+script = ExtResource("1_q5fal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1360770610]
+mesh = SubResource("QuadMesh_st2co")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=803060314]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport" unique_id=1659654520]
+
+[node name="TaskControl" type="Control" parent="SubViewport/CanvasLayer" unique_id=1387785329]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tasks" type="HBoxContainer" parent="SubViewport/CanvasLayer/TaskControl" unique_id=712354926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -52.0
+offset_right = 44.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quests" type="VBoxContainer" parent="SubViewport/CanvasLayer/TaskControl/Tasks" unique_id=521565265]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TitleLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/Tasks/Quests" unique_id=392945243]
+layout_mode = 2
+text = "TASKS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaskLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/Tasks/Quests" unique_id=488994974]
+layout_mode = 2
+text = "task"
+
+[node name="DescriptionLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/Tasks/Quests" unique_id=121003491]
+layout_mode = 2
+text = "description"
+
+[node name="CoordLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/Tasks/Quests" unique_id=2121909356]
+layout_mode = 2
+
+[node name="CongratsLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/Tasks/Quests" unique_id=1883420143 groups=["label"]]
+visible = false
+layout_mode = 2
+text = "Task completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GlobalTasks" type="VBoxContainer" parent="SubViewport/CanvasLayer/TaskControl" unique_id=1213750921]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -25.0
+offset_right = 59.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="SubViewport/CanvasLayer/TaskControl/GlobalTasks" unique_id=297089140]
+layout_mode = 2
+text = "GLOBAL TASKS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AllTasks" type="Label" parent="SubViewport/CanvasLayer/TaskControl/GlobalTasks" unique_id=1196988030]
+layout_mode = 2
+paragraph_separator = "}"
+
+[node name="Timer" type="Timer" parent="." unique_id=997413711 groups=["timer"]]
+wait_time = 10.0
+one_shot = true

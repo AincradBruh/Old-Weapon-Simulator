@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://csj6s2m6jju0h" path="res://Resources/Scripts/Player/player_movement.gd" id="1_2gd5p"]
 [ext_resource type="Script" uid="uid://bts0yxasb3rok" path="res://Resources/Scripts/Player/player_camera.gd" id="2_0jvrx"]
 [ext_resource type="Script" uid="uid://c2a35u4yskypj" path="res://Resources/Scripts/Player/interact_player.gd" id="3_3hrs8"]
+[ext_resource type="Texture2D" uid="uid://bdkfvgou0e60r" path="res://Resources/Textures/RadianPB2.png" id="4_jjndb"]
+[ext_resource type="Script" uid="uid://ca3xeyimfeqln" path="res://Resources/Scripts/Player/progress_bar.gd" id="5_ro5rl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_higq2"]
 radius = 0.4
@@ -67,9 +69,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -15.0
-offset_top = -11.5
+offset_top = 33.0
 offset_right = 15.0
-offset_bottom = 11.5
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
@@ -84,46 +86,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tasks" type="HBoxContainer" parent="CanvasLayer/UI" unique_id=1541062727]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI" unique_id=1528831256]
 layout_mode = 1
-offset_top = 40.0
-offset_right = 88.0
-offset_bottom = 117.0
-
-[node name="Quests" type="VBoxContainer" parent="CanvasLayer/UI/Tasks" unique_id=1031635455]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=1723780529]
-layout_mode = 2
-text = "TASKS:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TaskLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=1046148006]
-layout_mode = 2
-text = "task"
-
-[node name="DescriptionLabel" type="Label" parent="CanvasLayer/UI/Tasks/Quests" unique_id=14386208]
-layout_mode = 2
-text = "description"
-
-[node name="GlobalTasks" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=591513947]
-layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -20.0
 offset_top = -20.0
-offset_right = 119.0
+offset_right = 20.0
 offset_bottom = 20.0
+grow_horizontal = 2
 grow_vertical = 2
+max_value = 150.0
+fill_mode = 5
+texture_progress = ExtResource("4_jjndb")
+tint_progress = Color(13.671667, 13.671667, 13.671667, 1)
+script = ExtResource("5_ro5rl")
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/UI/GlobalTasks" unique_id=1575758926]
-layout_mode = 2
-text = "GLOBAL TASKS:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AllTasks" type="Label" parent="CanvasLayer/UI/GlobalTasks" unique_id=293283538]
-layout_mode = 2
-paragraph_separator = "}"
+[node name="InteractTimer" type="Timer" parent="." unique_id=1787923994 groups=["inter_timer"]]
+wait_time = 15.0
+one_shot = true
