@@ -9,3 +9,13 @@ Only you can decide which path to take:
 
 * complete missions and improve your reputation with the boss.
 * or go against the rules and face the consequences.
+
+---
+
+# Finally! Tech Beta release!
+
+![screentechbeta.png](ScreenTechBeta.png)
+
+\
+All basic interaction are configurated.
+It doesn't have any plot, just a Tech Beta.
